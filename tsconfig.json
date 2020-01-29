@@ -5,10 +5,12 @@
     "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "node",    
+    "downlevelIteration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es6",
+    "types": ["node"],
     "typeRoots": [
       "node_modules/@types"
     ],
