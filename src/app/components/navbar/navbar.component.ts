@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
       let fileReader: FileReader = new FileReader();
       let self = this;
       fileReader.onloadend = function(x) {
-        self.fileContent = fileReader.result;
+       // self.fileContent = fileReader.result;
       }
       fileReader.readAsText(file);
     }
