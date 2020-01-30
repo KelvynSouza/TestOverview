@@ -5,6 +5,8 @@ import { BaseTests } from "./model/baseTests";
 
 @Injectable()
 export class TestsListService {
+  Path: string = "";
+
   constructor() {}
 
   private getXML(path: string) {
@@ -17,10 +19,17 @@ export class TestsListService {
     return request;
   }
 
+  setPath(path: string) {
+    this.Path = path;
+  }
   getTests(XmlPath: string): BaseTests {
-    var xmlDoc = this.getXML(XmlPath);
-    var xmlString = new XMLSerializer().serializeToString(xmlDoc.responseXML);
-
+    var lstorage = localStorage.getItem("xmlTest");
+    if (!lstorage) {
+      var xmlDoc = this.getXML(XmlPath);
+      var xmlString = new XMLSerializer().serializeToString(xmlDoc.responseXML);
+    } else {
+      xmlString = lstorage;
+    }
     var convert = require("xml2js");
     var parser = new convert.Parser({
       mergeAttrs: true,
@@ -34,6 +43,4 @@ export class TestsListService {
     console.log(resultJson);
     return resultJson;
   }
-
-  
 }

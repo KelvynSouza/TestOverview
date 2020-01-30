@@ -4,19 +4,25 @@ import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MaterialModule } from 'app/tests-list/material-module';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { SettingsModalComponent } from './navbar/settings-modal/settings-modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule,    
+    MaterialModule
   ],
   declarations: [
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    SettingsModalComponent
   ],
   exports: [
     NavbarComponent,
     SidebarComponent
-  ]
+  ],
+  providers:[{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
 })
 export class ComponentsModule { }
