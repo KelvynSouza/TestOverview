@@ -24,7 +24,7 @@ export class TestsListComponent implements OnInit {
   }
 
   getTestInfo(XmlPath: string) {
-    this.test = this.testservice.getTests(XmlPath);  
+    this.test = this.testservice.getTests();  
   }
 
  

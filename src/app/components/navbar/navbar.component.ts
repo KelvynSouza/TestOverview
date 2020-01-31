@@ -7,6 +7,7 @@ import {
 } from "@angular/common";
 import { Router } from "@angular/router";
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from "@angular/material";
+import { TestsListService } from 'app/tests-list/tests-list.service';
 
 export interface DialogData {
   link: string;
@@ -28,7 +29,7 @@ export class NavbarComponent implements OnInit {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    public dialog: MatDialog
+    private testService:TestsListService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -36,7 +37,8 @@ export class NavbarComponent implements OnInit {
 
   fileContent: string = "";
 
-  modelOpen(path: any) {
+  changeFile(path: any) {
+    localStorage.removeItem('xmlTest');
     let file = path.target.files[0];
     let fileReader = new FileReader();
     fileReader.onload = e => 
@@ -45,8 +47,10 @@ export class NavbarComponent implements OnInit {
     };
     fileReader.readAsText(file);
 
-
-
+  }
+  
+  processChanges(){
+    this.testService.processTests("");
   }
 
   ngOnInit() {

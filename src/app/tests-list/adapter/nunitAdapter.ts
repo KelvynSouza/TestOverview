@@ -177,7 +177,9 @@ export function convertToBaseTests(xmlModel: TestResult):BaseTests {
 
         testsReturn.push(testReturn);
       }      
-      
+      testsReturn.sort(function(a,b){
+        return a.startTime.getTime() - b.startTime.getTime();
+      });
       tclass.classname = testclass.class;
       tclass.tests = testsReturn;
       tclasses.push(tclass);

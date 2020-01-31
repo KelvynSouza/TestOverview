@@ -5,7 +5,7 @@ import { BaseTests } from "./model/baseTests";
 
 @Injectable()
 export class TestsListService {
-  Path: string = "";
+   Tests: BaseTests;
 
   constructor() {}
 
@@ -19,14 +19,19 @@ export class TestsListService {
     return request;
   }
 
-  setPath(path: string) {
-    this.Path = path;
+  getTests() {
+    //if (!this.Tests) {
+      this.processTests("");      
+    //} 
+    return this.Tests;
   }
-  getTests(XmlPath: string): BaseTests {
+
+  processTests(XmlPath: string) {  
     var lstorage = localStorage.getItem("xmlTest");
+    var xmlString:string;
     if (!lstorage) {
       var xmlDoc = this.getXML(XmlPath);
-      var xmlString = new XMLSerializer().serializeToString(xmlDoc.responseXML);
+      xmlString = new XMLSerializer().serializeToString(xmlDoc.responseXML);
     } else {
       xmlString = lstorage;
     }
@@ -40,7 +45,6 @@ export class TestsListService {
       resultJson = result;
     });
     resultJson = convertToBaseTests(resultJson);
-    console.log(resultJson);
-    return resultJson;
+    this.Tests = resultJson;
   }
 }
