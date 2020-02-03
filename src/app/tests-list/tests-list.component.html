@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="container-fluid">
-    
+    <div *ngIf="test">
       <mat-expansion-panel
         class="left-aligned-header"
         *ngFor="let testsNames of test.TestsGroups"
@@ -24,6 +24,6 @@
         </mat-expansion-panel-header>
         <app-tests-classes [Tests]="testsNames.testsclass"></app-tests-classes>
       </mat-expansion-panel>
-    
+    </div>  
   </div>
 </div>

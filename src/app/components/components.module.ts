@@ -7,7 +7,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MaterialModule } from 'app/tests-list/material-module';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { SettingsModalComponent } from './navbar/settings-modal/settings-modal.component';
-import { TestsListService } from 'app/tests-list/tests-list.service';
 
 @NgModule({
   imports: [
@@ -24,6 +23,6 @@ import { TestsListService } from 'app/tests-list/tests-list.service';
     NavbarComponent,
     SidebarComponent
   ],
-  providers:[TestsListService]
+  providers:[]
 })
 export class ComponentsModule { }

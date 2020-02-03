@@ -1,66 +1,68 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">assignment_turned_in</i>
+    <div *ngIf="test">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">assignment_turned_in</i>
+              </div>
+              <p class="card-category">Testes executados</p>
+              <h3 class="card-title">{{ test.Counters.total }}</h3>
             </div>
-            <p class="card-category">Testes executados</p>
-            <h3 class="card-title">{{ test.Counters.total }}</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              Ultima execução.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">done</i>
-            </div>
-            <p class="card-category">Testes com sucesso</p>
-            <h3 class="card-title">{{ test.Counters.passed }}</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              Ultima execução.
+            <div class="card-footer">
+              <div class="stats">
+                Ultima execução.
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">info_outline</i>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">done</i>
+              </div>
+              <p class="card-category">Testes com sucesso</p>
+              <h3 class="card-title">{{ test.Counters.passed }}</h3>
             </div>
-            <p class="card-category">Testes com falha</p>
-            <h3 class="card-title">{{ test.Counters.failed }}</h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              Ultima execução.
+            <div class="card-footer">
+              <div class="stats">
+                Ultima execução.
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-info card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">compare_arrows</i>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">info_outline</i>
+              </div>
+              <p class="card-category">Testes com falha</p>
+              <h3 class="card-title">{{ test.Counters.failed }}</h3>
             </div>
-            <p class="card-category">Total de testes</p>
-            <h3 class="card-title">{{ test.Counters.total }}</h3>
+            <div class="card-footer">
+              <div class="stats">
+                Ultima execução.
+              </div>
+            </div>
           </div>
-          <div class="card-footer">
-            <div class="stats">
-              Ultima execução.
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+              <div class="card-icon">
+                <i class="material-icons">compare_arrows</i>
+              </div>
+              <p class="card-category">Total de testes</p>
+              <h3 class="card-title">{{ test.Counters.total }}</h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                Ultima execução.
+              </div>
             </div>
           </div>
         </div>
@@ -411,6 +413,5 @@
               </div>
           </div>
       </div>-->
-      
   </div>
 </div>

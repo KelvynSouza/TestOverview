@@ -4,28 +4,35 @@ import {
   OnChanges,
   SimpleChanges,
   EventEmitter,
-  Output
+  Output,
+  OnDestroy
 } from "@angular/core";
 import { TestsListService } from "./tests-list.service";
 import { BaseTests } from "./model/baseTests";
+import { Subscriber, Subscription } from 'rxjs';
 
 @Component({
   selector: "app-tests-list",
   templateUrl: "./tests-list.component.html",
   styleUrls: ["./tests-list.component.css"]
 })
-export class TestsListComponent implements OnInit {
+export class TestsListComponent implements OnInit,OnDestroy {  
   
   test: BaseTests;
-  constructor(private testservice: TestsListService) {}
-  ngOnInit() {
-    this.getTestInfo("");
-    console.log(this.test);
+  subscriber:Subscription;
+  constructor(private testservice: TestsListService) {
+    
   }
-
-  getTestInfo(XmlPath: string) {
-    this.test = this.testservice.getTests();  
+  ngOnInit() {    
+    this.subscriber = this.testservice.testsSubject$.subscribe((e)=>{this.test = e;console.log(e)});
+    
+    //console.log(this.test);
   }
+  ngOnDestroy() {
+    this.subscriber.unsubscribe();
+  }
+ 
+  
 
  
 }

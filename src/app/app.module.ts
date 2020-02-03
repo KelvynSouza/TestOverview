@@ -14,6 +14,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './tests-list/material-module';
+import { TestsListModule } from './tests-list/tests-list.module';
+import { TestsListService } from './tests-list/tests-list.service';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { MaterialModule } from './tests-list/material-module';
     RouterModule,
     NgbModule,
     MaterialModule,
-    AppRoutingModule,
+    AppRoutingModule,    
+    TestsListModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -35,7 +38,7 @@ import { MaterialModule } from './tests-list/material-module';
     AdminLayoutComponent,
 
   ],
-  providers: [],
+  providers: [TestsListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

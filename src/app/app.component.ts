@@ -6,10 +6,8 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  xmlItemName: string = "xmlTest";
+constructor(){}
+
   ngOnInit(): void {
-    if (localStorage.getItem(this.xmlItemName)) {
-      localStorage.removeItem(this.xmlItemName);
-    }
   }
 }

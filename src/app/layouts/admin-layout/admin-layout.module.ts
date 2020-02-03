@@ -9,7 +9,6 @@ import { TableListComponent } from '../../table-list/table-list.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-import { TestsListModule } from 'app/tests-list/tests-list.module';
 import {
   MatButtonModule,
   MatInputModule,
@@ -18,6 +17,7 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+import { TestsListModule } from 'app/tests-list/tests-list.module';
 @NgModule({
   imports: [
     CommonModule,

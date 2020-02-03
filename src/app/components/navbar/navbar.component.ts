@@ -48,12 +48,12 @@ export class NavbarComponent implements OnInit {
     fileReader.readAsText(file);
 
   }
-  
-  processChanges(){
-    this.testService.processTests("");
-  }
 
+  processChanges(){        
+     this.testService.setTests("");
+  }
   ngOnInit() {
+
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];

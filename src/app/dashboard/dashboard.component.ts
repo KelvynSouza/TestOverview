@@ -1,21 +1,21 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnChanges, SimpleChanges, OnDestroy } from "@angular/core";
 import * as Chartist from "chartist";
 import { TestsListService } from "app/tests-list/tests-list.service";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.css"]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit,OnDestroy{
+  
+  subscriber:Subscription;
   test: any;
-
+  
   constructor(private testservice: TestsListService) {}
 
-  getTestInfo(XmlPath: string) {
-    this.test = this.testservice.getTests();
-  }
-
+  
   startAnimationForLineChart(chart) {
     let seq: any, delays: any, durations: any;
     seq = 0;
@@ -77,7 +77,9 @@ export class DashboardComponent implements OnInit {
     seq2 = 0;
   }
   ngOnInit() {
-    this.getTestInfo("");
+    this.subscriber = this.testservice.testsSubject$.subscribe((e)=>{this.test = e;console.log(e)}); 
+    
+    
 
     /*
     
@@ -167,5 +169,8 @@ export class DashboardComponent implements OnInit {
     //start animation for the Emails Subscription Chart
     this.startAnimationForBarChart(websiteViewsChart);
     */
+  }
+  ngOnDestroy() {
+    this.subscriber.unsubscribe();
   }
 }
