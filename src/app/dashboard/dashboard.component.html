@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div *ngIf="test">
+    <div *ngIf="test">      
       <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="card card-stats">
@@ -13,7 +13,7 @@
             </div>
             <div class="card-footer">
               <div class="stats">
-                Ultima execução.
+                Ultima execução {{ test.date }}
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@
             </div>
             <div class="card-footer">
               <div class="stats">
-                Ultima execução.
+                Ultima execução {{ test.date }}
               </div>
             </div>
           </div>
@@ -40,12 +40,14 @@
               <div class="card-icon">
                 <i class="material-icons">info_outline</i>
               </div>
-              <p class="card-category">&nbsp;&nbsp;&nbsp;&nbsp;Testes com falha</p>
+              <p class="card-category">
+                &nbsp;&nbsp;&nbsp;&nbsp;Testes com falha
+              </p>
               <h3 class="card-title">{{ test.Counters.failed }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                Ultima execução.
+                Ultima execução {{ test.date }}
               </div>
             </div>
           </div>
@@ -56,12 +58,14 @@
               <div class="card-icon">
                 <i class="material-icons">compare_arrows</i>
               </div>
-              <p class="card-category">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total de testes</p>
+              <p class="card-category">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total de testes
+              </p>
               <h3 class="card-title">{{ test.Counters.total }}</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                Ultima execução.
+                Ultima execução {{ test.date }}
               </div>
             </div>
           </div>

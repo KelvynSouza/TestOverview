@@ -56,10 +56,13 @@ export function convertToBaseTests(xmlModel: TestResult) {
   return Test;
 }
 */
-export function convertToBaseTests(xmlModel: TestResult):BaseTests {
+export function convertToBaseTests(xmlModel: TestResult): BaseTests {
   var testsBase: BaseTests = {};
   testsBase.Counters = xmlModel.TestRun.ResultSummary.Counters;
-
+  testsBase.date = xmlModel.TestRun.Times.start.substring(
+    0,
+    xmlModel.TestRun.Times.start.lastIndexOf(".")
+  );
   //Filter tests by namespace
 
   //get all namespaces
@@ -99,7 +102,7 @@ export function convertToBaseTests(xmlModel: TestResult):BaseTests {
     tests.namespace = nameSpace;
 
     //Get all classes for namespace
-    var classes: string[] =[];
+    var classes: string[] = [];
     xmlModel.TestRun.TestDefinitions.UnitTest.filter(function(element) {
       return element.TestMethod.className.includes(nameSpace);
     }).forEach(e => {
@@ -128,15 +131,15 @@ export function convertToBaseTests(xmlModel: TestResult):BaseTests {
     testsByNamespace.push(tests);
   }
 
-  var testGroups: TestsGroup[] =[];
+  var testGroups: TestsGroup[] = [];
   // tests' information
   for (var testbynamespace of testsByNamespace) {
-    var testGroup: TestsGroup = {outcome:true};
+    var testGroup: TestsGroup = { outcome: true };
     var tclasses: TestClass[] = [];
 
     for (var testclass of testbynamespace.tests) {
-      var tclass: TestClass = {outcome:true};
-      var testsReturn: Test[] =[];
+      var tclass: TestClass = { outcome: true };
+      var testsReturn: Test[] = [];
 
       for (var testid of testclass.id) {
         var testReturn: Test = {};
@@ -151,7 +154,7 @@ export function convertToBaseTests(xmlModel: TestResult):BaseTests {
           element
         ) {
           return element.id === testReturn.testId;
-        });        
+        });
 
         testReturn.startTime = new Date(unitTestResult.startTime);
 
@@ -168,23 +171,22 @@ export function convertToBaseTests(xmlModel: TestResult):BaseTests {
         }
 
         if (unitTestResult.outcome == "Passed") testReturn.outcome = true;
-        else 
-        {
+        else {
           testReturn.outcome = false;
           tclass.outcome = false;
           testGroup.outcome = false;
         }
 
         testsReturn.push(testReturn);
-      }      
-      testsReturn.sort(function(a,b){
+      }
+      testsReturn.sort(function(a, b) {
         return a.startTime.getTime() - b.startTime.getTime();
       });
       tclass.classname = testclass.class;
       tclass.tests = testsReturn;
       tclasses.push(tclass);
     }
-    
+
     testGroup.nameSpace = testbynamespace.namespace;
     testGroup.testsclass = tclasses;
     testGroups.push(testGroup);

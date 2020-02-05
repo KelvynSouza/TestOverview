@@ -43,4 +43,5 @@ export class Counters {
 export class BaseTests {
   Counters?: Counters;
   TestsGroups?: TestsGroup[];
+  date?:string;
 }
