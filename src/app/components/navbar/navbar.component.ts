@@ -7,7 +7,7 @@ import {
 } from "@angular/common";
 import { Router } from "@angular/router";
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from "@angular/material";
-import { TestsListService } from 'app/tests-list/tests-list.service';
+import { TestsListService } from "app/tests-list/tests-list.service";
 
 export interface DialogData {
   link: string;
@@ -29,31 +29,42 @@ export class NavbarComponent implements OnInit {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private testService:TestsListService
+    private testService: TestsListService
   ) {
     this.location = location;
     this.sidebarVisible = false;
   }
 
   fileContent: string = "";
+  fileAlive: boolean = false;
+  buttonDisable: boolean = false;
 
   changeFile(path: any) {
-    localStorage.removeItem('xmlTest');
+    this.fileAlive = false;
+    localStorage.removeItem("xmlTest");
     let file = path.target.files[0];
     let fileReader = new FileReader();
-    fileReader.onload = e => 
-    {
-        localStorage.setItem('xmlTest', fileReader.result.toString());
+    fileReader.onload = e => {
+      //  localStorage.setItem('xmlTest', fileReader.result.toString());
+      this.fileAlive = true;
+      this.fileContent = fileReader.result.toString();
     };
     fileReader.readAsText(file);
-
   }
 
-  processChanges(){        
-     this.testService.setTests("");
+  processChanges() {
+    this.fileAlive = false;
+    this.testService.setTests(this.fileContent);
   }
+
+  defaultTests(){
+    this.fileAlive = false;
+    this.buttonDisable = true;    
+    this.testService.setTests("");
+    this.buttonDisable = false;
+  }
+
   ngOnInit() {
-
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];

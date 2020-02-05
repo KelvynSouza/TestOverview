@@ -14,8 +14,7 @@ export class TestsClassesComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     let currentTests = changes.Tests.currentValue;
     if (currentTests != undefined || currentTests != null) {      
-      this.Test = this.Tests;
-      console.log(this.Test);     
+      this.Test = this.Tests;    
     }
   }
   constructor() {}

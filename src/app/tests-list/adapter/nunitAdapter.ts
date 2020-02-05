@@ -131,11 +131,11 @@ export function convertToBaseTests(xmlModel: TestResult):BaseTests {
   var testGroups: TestsGroup[] =[];
   // tests' information
   for (var testbynamespace of testsByNamespace) {
-    var testGroup: TestsGroup = {};
+    var testGroup: TestsGroup = {outcome:true};
     var tclasses: TestClass[] = [];
 
     for (var testclass of testbynamespace.tests) {
-      var tclass: TestClass = {};
+      var tclass: TestClass = {outcome:true};
       var testsReturn: Test[] =[];
 
       for (var testid of testclass.id) {

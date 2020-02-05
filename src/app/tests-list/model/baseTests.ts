@@ -2,12 +2,14 @@ export class TestsGroup {
   testsclass?: TestClass[];
   nameSpace?: string = "";
   outcome?:boolean = true;
+  show?:boolean = false;
 }
 
 export class TestClass {
   classname?: string = "";
   tests?:Test[];
   outcome?:boolean = true;
+  show?:boolean = false;
 }
 
 export class Test

@@ -28,10 +28,8 @@ import { TestsListService } from './tests-list/tests-list.service';
     NgbModule,
     MaterialModule,
     AppRoutingModule,    
-    TestsListModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    TestsListModule
+    
   ],
   declarations: [
     AppComponent,

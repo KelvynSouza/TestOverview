@@ -77,7 +77,7 @@ export class DashboardComponent implements OnInit,OnDestroy{
     seq2 = 0;
   }
   ngOnInit() {
-    this.subscriber = this.testservice.testsSubject$.subscribe((e)=>{this.test = e;console.log(e)}); 
+    this.subscriber = this.testservice.testsSubject$.subscribe((e)=>{this.test = e;}); 
     
     
 
